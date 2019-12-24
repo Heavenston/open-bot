@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A bot for Open",
   "main": "dist/index.js",
-  "author": "Heavenstone and Matcactus",
+  "author": "OpenCorp",
   "license": "MIT",
   "private": true,
   "scripts": {
