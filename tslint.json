@@ -11,7 +11,7 @@
     "no-require-imports": true,
     "prefer-const": true,
     "class-name": true,
-    "file-name-casing": [true, {".*":"pascal-case"}],
+    "file-name-casing": [true, "camel-case"],
     "interface-name": [true, "always-prefix"],
     "interface-over-type-literal": true,
     "match-default-export-name": true,
@@ -28,7 +28,8 @@
       "options": [
         "check-format",
         "require-const-for-all-caps",
-        "ban-keywords"
+        "ban-keywords",
+        "allow-leading-underscore"
       ]
     },
     "arrow-parens": [true, "ban-single-arg-parens"],
