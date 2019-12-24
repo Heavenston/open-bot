@@ -8,11 +8,12 @@
   "private": true,
   "scripts": {
     "lint": "tslint --project .",
-    "build": "yarn lint || tsc",
-    "run:dev": "ts-node src/index.ts",
-    "run": "node dist/index.js"
+    "build": "yarn lint && tsc",
+    "start:dev": "dotenv -e \"./.env\" ts-node src/index.ts",
+    "start": "dotenv -e \"./.env\" node dist/index.js"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.5.35",
     "@types/node": "^13.1.0",
     "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
@@ -20,6 +21,7 @@
   },
   "dependencies": {
     "discord.js": "^11.5.1",
+    "dotenv-cli": "^3.1.0",
     "mongoose": "^5.8.3"
   }
 }

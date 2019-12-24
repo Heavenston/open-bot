@@ -3,7 +3,7 @@
     "moduleResolution": "Node",
     "target": "ES5",
     "outDir": "dist",
-    "lib": ["ES2015", "DOM"],
+    "lib": ["ES6", "DOM"],
     "strict": true
   },
   "include": [
