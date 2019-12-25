@@ -1,4 +1,5 @@
 import * as mongoose from "mongoose";
+import * as Discord from "discord.js";
 
 export interface IGuildDocument extends mongoose.Document {
   id: string;
@@ -21,4 +22,7 @@ export async function fromId(id: string): Promise<IGuildDocument> {
     prefix: "$",
     id
   });
+}
+export async function fromGuild(guild: Discord.Guild) {
+  return await fromId(guild.id);
 }
