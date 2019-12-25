@@ -1,9 +1,9 @@
 import * as Discord from "discord.js";
 import * as GuildDb from "./db/guildDb";
+import * as commandHandler from "./discord/commandHandler";
 
 export const client = new Discord.Client();
 client.login(process.env.discordToken);
-
 
 client.on("ready", () => {
   console.log("Connected to discord");
@@ -21,16 +21,16 @@ client.on("message",async mess => {
       .substring(prefix.length)
       .split(" ")
       .filter(arg => !!arg);
-    const command = args.shift();
+    const name = args.shift();
+    if (!name) throw "Unexpected Error";
 
-    if (command === "bonjour") {
-      mess.reply("Salut !");
-    }
+    const cmd: commandHandler.ICommand = {
+      name,
+      args,
+      guild: mess.guild,
+      message: mess
+    };
 
-    else if (command === "stop") {
-      client.destroy().then(() => {
-        process.exit(0);
-      });
-    }
+    commandHandler.execCommand(cmd);
 }
 });
