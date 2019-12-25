@@ -12,9 +12,9 @@ const schema = new mongoose.Schema({
   guildId: {type: String, required: true},
   id: {type: String, required: true},
 });
-const model = mongoose.model("GuildMember", schema, "GuildMembers");
+const model = mongoose.model<IGuildMemberDocument>("GuildMember", schema, "GuildMembers");
 
-export async function fromIds(guildId: string, id: string) {
+export async function fromIds(guildId: string, id: string): Promise<IGuildMemberDocument> {
   const doc = await model.findOne({guildId, id}).exec();
   if (doc)
     return doc;
@@ -24,6 +24,6 @@ export async function fromIds(guildId: string, id: string) {
     id
   });
 }
-export async function fromGuildMember(member: Discord.GuildMember) {
+export async function fromGuildMember(member: Discord.GuildMember): Promise<IGuildMemberDocument> {
   return await fromIds(member.guild.id, member.id);
 }
