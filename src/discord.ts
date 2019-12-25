@@ -7,6 +7,7 @@ client.login(process.env.discordToken);
 
 client.on("ready", () => {
   console.log("Connected to discord");
+  client.user.setActivity("You", {type: "WATCHING"});
 });
 
 client.on("message",async mess => {
