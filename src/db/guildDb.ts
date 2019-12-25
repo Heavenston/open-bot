@@ -8,7 +8,7 @@ export interface IGuildDocument extends mongoose.Document {
 
 const schema = new mongoose.Schema({
   id: {type: String, required: true, unique: true},
-  prefix: {type: String, required: true},
+  prefix: {type: String, default: "$", required: true},
 });
 const model = mongoose.model<IGuildDocument>("Guild", schema, "Guilds");
 
@@ -19,7 +19,6 @@ export async function fromId(id: string): Promise<IGuildDocument> {
   }
 
   return new model({
-    prefix: "$",
     id
   });
 }
