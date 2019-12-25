@@ -14,9 +14,8 @@ const model = mongoose.model<IGuildDocument>("Guild", schema, "Guilds");
 
 export async function fromId(id: string): Promise<IGuildDocument> {
   const doc = await model.findOne({id}).exec();
-  if (doc) {
+  if (doc)
     return doc;
-  }
 
   return new model({
     id
